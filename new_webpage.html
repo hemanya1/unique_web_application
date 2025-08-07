@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Static Color Palettes</title>
+    <!-- Tailwind CSS CDN for a clean, responsive design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font and base styling */
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f0f0f0; /* A light, pleasant background */
+            color: #333333; /* Darker text for readability */
+        }
+        .color-swatch:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Main Application Container -->
+    <div class="max-w-4xl w-full bg-white p-8 rounded-2xl shadow-2xl space-y-10">
+        <!-- Header -->
+        <header class="text-center mb-6">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Multiple Color Palettes</h1>
+            <p class="text-gray-600">Click any color swatch to copy its hex code!</p>
+        </header>
+        
+        <!-- Navigation Dropdown -->
+        <div class="mb-8">
+            <label for="palette-selector" class="block text-gray-700 text-sm font-bold mb-2">Jump to a palette:</label>
+            <select id="palette-selector" onchange="scrollToPalette(this.value)" class="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out">
+                <option value="" disabled selected>Choose a palette...</option>
+                <option value="cool-blues">Cool Blues</option>
+                <option value="warm-earth-tones">Warm Earth Tones</option>
+                <option value="vibrant-sunset">Vibrant Sunset</option>
+                <option value="monochromatic-grays">Monochromatic Grays</option>
+                <option value="soothing-pastels">Soothing Pastels</option>
+                <option value="earthy-sage">Earthy Sage</option>
+                <option value="blush-and-cream">Blush & Cream</option>
+                <option value="misty-lilac">Misty Lilac</option>
+                <option value="deep-greens">Deep Greens</option>
+                <option value="soft-purples">Soft Purples</option>
+                <option value="vibrant-teals">Vibrant Teals</option>
+                <option value="lively-tropical">Lively Tropical</option>
+                <option value="moody-dark-tones">Moody Dark Tones</option>
+                <option value="retro-80s">Retro '80s</option>
+                <option value="high-contrast-modern">High-Contrast Modern</option>
+                <option value="dusty-vintage">Dusty Vintage</option>
+                <option value="energetic-citrus">Energetic Citrus</option>
+            </select>
+        </div>
+
+        <!-- Cool Blues Palette -->
+        <div>
+            <h2 id="cool-blues" class="text-2xl font-bold text-indigo-600 mb-4">Cool Blues</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #A2B2D1;" onclick="copyToClipboard('#A2B2D1', this)">
+                    <span id="hex-A2B2D1" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#A2B2D1</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #5C7EAE;" onclick="copyToClipboard('#5C7EAE', this)">
+                    <span id="hex-5C7EAE" class="text-center font-semibold text-lg text-white drop-shadow-md">#5C7EAE</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #2E4374;" onclick="copyToClipboard('#2E4374', this)">
+                    <span id="hex-2E4374" class="text-center font-semibold text-lg text-white drop-shadow-md">#2E4374</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Warm Earth Tones Palette -->
+        <div>
+            <h2 id="warm-earth-tones" class="text-2xl font-bold text-orange-600 mb-4">Warm Earth Tones</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #d8c29b;" onclick="copyToClipboard('#d8c29b', this)">
+                    <span id="hex-d8c29b" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#d8c29b</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #b0916a;" onclick="copyToClipboard('#b0916a', this)">
+                    <span id="hex-b0916a" class="text-center font-semibold text-lg text-white drop-shadow-md">#b0916a</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #8b6845;" onclick="copyToClipboard('#8b6845', this)">
+                    <span id="hex-8b6845" class="text-center font-semibold text-lg text-white drop-shadow-md">#8b6845</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vibrant Sunset Palette -->
+        <div>
+            <h2 id="vibrant-sunset" class="text-2xl font-bold text-red-600 mb-4">Vibrant Sunset</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #f1c40f;" onclick="copyToClipboard('#f1c40f', this)">
+                    <span id="hex-f1c40f" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#f1c40f</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #e67e22;" onclick="copyToClipboard('#e67e22', this)">
+                    <span id="hex-e67e22" class="text-center font-semibold text-lg text-white drop-shadow-md">#e67e22</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #e74c3c;" onclick="copyToClipboard('#e74c3c', this)">
+                    <span id="hex-e74c3c" class="text-center font-semibold text-lg text-white drop-shadow-md">#e74c3c</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Monochromatic Grays Palette -->
+        <div>
+            <h2 id="monochromatic-grays" class="text-2xl font-bold text-gray-600 mb-4">Monochromatic Grays</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #C0C0C0;" onclick="copyToClipboard('#C0C0C0', this)">
+                    <span id="hex-C0C0C0" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#C0C0C0</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #808080;" onclick="copyToClipboard('#808080', this)">
+                    <span id="hex-808080" class="text-center font-semibold text-lg text-white drop-shadow-md">#808080</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #404040;" onclick="copyToClipboard('#404040', this)">
+                    <span id="hex-404040" class="text-center font-semibold text-lg text-white drop-shadow-md">#404040</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soothing Pastels Palette -->
+        <div>
+            <h2 id="soothing-pastels" class="text-2xl font-bold text-pink-600 mb-4">Soothing Pastels</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #FFD1DC;" onclick="copyToClipboard('#FFD1DC', this)">
+                    <span id="hex-FFD1DC" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#FFD1DC</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #B2EBF2;" onclick="copyToClipboard('#B2EBF2', this)">
+                    <span id="hex-B2EBF2" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#B2EBF2</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #D7F2E2;" onclick="copyToClipboard('#D7F2E2', this)">
+                    <span id="hex-D7F2E2" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#D7F2E2</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Earthy Sage Palette -->
+        <div>
+            <h2 id="earthy-sage" class="text-2xl font-bold text-green-600 mb-4">Earthy Sage</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #C3D8C8;" onclick="copyToClipboard('#C3D8C8', this)">
+                    <span id="hex-C3D8C8" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#C3D8C8</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #A9B299;" onclick="copyToClipboard('#A9B299', this)">
+                    <span id="hex-A9B299" class="text-center font-semibold text-lg text-white drop-shadow-md">#A9B299</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #727B66;" onclick="copyToClipboard('#727B66', this)">
+                    <span id="hex-727B66" class="text-center font-semibold text-lg text-white drop-shadow-md">#727B66</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Blush & Cream Palette -->
+        <div>
+            <h2 id="blush-and-cream" class="text-2xl font-bold text-pink-600 mb-4">Blush & Cream</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #FFE5E5;" onclick="copyToClipboard('#FFE5E5', this)">
+                    <span id="hex-FFE5E5" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#FFE5E5</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #F8B4B4;" onclick="copyToClipboard('#F8B4B4', this)">
+                    <span id="hex-F8B4B4" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#F8B4B4</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #F28C8C;" onclick="copyToClipboard('#F28C8C', this)">
+                    <span id="hex-F28C8C" class="text-center font-semibold text-lg text-white drop-shadow-md">#F28C8C</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Misty Lilac Palette -->
+        <div>
+            <h2 id="misty-lilac" class="text-2xl font-bold text-purple-600 mb-4">Misty Lilac</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #D3D3E0;" onclick="copyToClipboard('#D3D3E0', this)">
+                    <span id="hex-D3D3E0" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#D3D3E0</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #C0B7D6;" onclick="copyToClipboard('#C0B7D6', this)">
+                    <span id="hex-C0B7D6" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#C0B7D6</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #8C809F;" onclick="copyToClipboard('#8C809F', this)">
+                    <span id="hex-8C809F" class="text-center font-semibold text-lg text-white drop-shadow-md">#8C809F</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Deep Greens Palette -->
+        <div>
+            <h2 id="deep-greens" class="text-2xl font-bold text-green-600 mb-4">Deep Greens</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #6a9955;" onclick="copyToClipboard('#6a9955', this)">
+                    <span id="hex-6a9955" class="text-center font-semibold text-lg text-white drop-shadow-md">#6a9955</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #4d7a3c;" onclick="copyToClipboard('#4d7a3c', this)">
+                    <span id="hex-4d7a3c" class="text-center font-semibold text-lg text-white drop-shadow-md">#4d7a3c</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #3b5f2d;" onclick="copyToClipboard('#3b5f2d', this)">
+                    <span id="hex-3b5f2d" class="text-center font-semibold text-lg text-white drop-shadow-md">#3b5f2d</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Soft Purples Palette -->
+        <div>
+            <h2 id="soft-purples" class="text-2xl font-bold text-purple-600 mb-4">Soft Purples</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #E6E6FA;" onclick="copyToClipboard('#E6E6FA', this)">
+                    <span id="hex-E6E6FA" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#E6E6FA</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #B8A8D8;" onclick="copyToClipboard('#B8A8D8', this)">
+                    <span id="hex-B8A8D8" class="text-center font-semibold text-lg text-white drop-shadow-md">#B8A8D8</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #7966A5;" onclick="copyToClipboard('#7966A5', this)">
+                    <span id="hex-7966A5" class="text-center font-semibold text-lg text-white drop-shadow-md">#7966A5</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Vibrant Teals Palette -->
+        <div>
+            <h2 id="vibrant-teals" class="text-2xl font-bold text-teal-600 mb-4">Vibrant Teals</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #00A389;" onclick="copyToClipboard('#00A389', this)">
+                    <span id="hex-00A389" class="text-center font-semibold text-lg text-white drop-shadow-md">#00A389</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #007C74;" onclick="copyToClipboard('#007C74', this)">
+                    <span id="hex-007C74" class="text-center font-semibold text-lg text-white drop-shadow-md">#007C74</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #004D40;" onclick="copyToClipboard('#004D40', this)">
+                    <span id="hex-004D40" class="text-center font-semibold text-lg text-white drop-shadow-md">#004D40</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lively Tropical Palette -->
+        <div>
+            <h2 id="lively-tropical" class="text-2xl font-bold text-yellow-600 mb-4">Lively Tropical</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #FFD300;" onclick="copyToClipboard('#FFD300', this)">
+                    <span id="hex-FFD300" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#FFD300</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #F87522;" onclick="copyToClipboard('#F87522', this)">
+                    <span id="hex-F87522" class="text-center font-semibold text-lg text-white drop-shadow-md">#F87522</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #60B78B;" onclick="copyToClipboard('#60B78B', this)">
+                    <span id="hex-60B78B" class="text-center font-semibold text-lg text-white drop-shadow-md">#60B78B</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moody Dark Tones Palette -->
+        <div>
+            <h2 id="moody-dark-tones" class="text-2xl font-bold text-gray-600 mb-4">Moody Dark Tones</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #2D2D2D;" onclick="copyToClipboard('#2D2D2D', this)">
+                    <span id="hex-2D2D2D" class="text-center font-semibold text-lg text-white drop-shadow-md">#2D2D2D</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #555B6E;" onclick="copyToClipboard('#555B6E', this)">
+                    <span id="hex-555B6E" class="text-center font-semibold text-lg text-white drop-shadow-md">#555B6E</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #384055;" onclick="copyToClipboard('#384055', this)">
+                    <span id="hex-384055" class="text-center font-semibold text-lg text-white drop-shadow-md">#384055</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Retro '80s Palette -->
+        <div>
+            <h2 id="retro-80s" class="text-2xl font-bold text-pink-600 mb-4">Retro '80s</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #FF5E5E;" onclick="copyToClipboard('#FF5E5E', this)">
+                    <span id="hex-FF5E5E" class="text-center font-semibold text-lg text-white drop-shadow-md">#FF5E5E</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #F7E94E;" onclick="copyToClipboard('#F7E94E', this)">
+                    <span id="hex-F7E94E" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#F7E94E</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #538AEC;" onclick="copyToClipboard('#538AEC', this)">
+                    <span id="hex-538AEC" class="text-center font-semibold text-lg text-white drop-shadow-md">#538AEC</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- High-Contrast Modern Palette -->
+        <div>
+            <h2 id="high-contrast-modern" class="text-2xl font-bold text-red-600 mb-4">High-Contrast Modern</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #FF4500;" onclick="copyToClipboard('#FF4500', this)">
+                    <span id="hex-FF4500" class="text-center font-semibold text-lg text-white drop-shadow-md">#FF4500</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #1A1A1A;" onclick="copyToClipboard('#1A1A1A', this)">
+                    <span id="hex-1A1A1A" class="text-center font-semibold text-lg text-white drop-shadow-md">#1A1A1A</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #E6E8E6;" onclick="copyToClipboard('#E6E8E6', this)">
+                    <span id="hex-E6E8E6" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#E6E8E6</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dusty Vintage Palette -->
+        <div>
+            <h2 id="dusty-vintage" class="text-2xl font-bold text-green-600 mb-4">Dusty Vintage</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #A3A380;" onclick="copyToClipboard('#A3A380', this)">
+                    <span id="hex-A3A380" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#A3A380</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #E2B2B2;" onclick="copyToClipboard('#E2B2B2', this)">
+                    <span id="hex-E2B2B2" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#E2B2B2</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #5C4F54;" onclick="copyToClipboard('#5C4F54', this)">
+                    <span id="hex-5C4F54" class="text-center font-semibold text-lg text-white drop-shadow-md">#5C4F54</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Energetic Citrus Palette -->
+        <div>
+            <h2 id="energetic-citrus" class="text-2xl font-bold text-yellow-600 mb-4">Energetic Citrus</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #FFC300;" onclick="copyToClipboard('#FFC300', this)">
+                    <span id="hex-FFC300" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#FFC300</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #FF5733;" onclick="copyToClipboard('#FF5733', this)">
+                    <span id="hex-FF5733" class="text-center font-semibold text-lg text-white drop-shadow-md">#FF5733</span>
+                </div>
+                <div class="color-swatch w-full h-24 md:h-64 rounded-xl flex flex-col justify-end p-4 relative overflow-hidden transition-all duration-300 cursor-pointer" style="background-color: #7ED957;" onclick="copyToClipboard('#7ED957', this)">
+                    <span id="hex-7ED957" class="text-center font-semibold text-lg text-gray-800 drop-shadow-md">#7ED957</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
+        /**
+         * Copies a given string of text to the clipboard.
+         * @param {string} textToCopy - The text to be copied.
+         * @param {HTMLElement} parentElement - The parent element of the span to update.
+         */
+        function copyToClipboard(textToCopy, parentElement) {
+            // Create a temporary textarea element
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = textToCopy;
+            
+            // Append it to the body to be able to select its content
+            document.body.appendChild(tempTextArea);
+            
+            // Select the text
+            tempTextArea.select();
+            tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+            
+            // Execute the copy command
+            document.execCommand('copy');
+            
+            // Clean up by removing the temporary textarea
+            document.body.removeChild(tempTextArea);
+
+            // Get the hex code span to show a confirmation message
+            const hexSpan = parentElement.querySelector('span');
+            const originalText = hexSpan.textContent;
+            hexSpan.textContent = 'Copied!';
+
+            // Revert the text back after a short delay
+            setTimeout(() => {
+                hexSpan.textContent = originalText;
+            }, 1000); // 1 second delay
+        }
+
+        /**
+         * Scrolls the page to the section with the given ID.
+         * @param {string} sectionId - The ID of the element to scroll to.
+         */
+        function scrollToPalette(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
